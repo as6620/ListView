@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         eTFirst.setVisibility(View.VISIBLE);
         eTHefreshOrMahpil.setVisibility(View.VISIBLE);
         btnNext.setVisibility(View.VISIBLE);
-        handasitOrHeshbonit = true;
+        handasitOrHeshbonit = false;
     }
 
     public void goHeshbonit(View view) {
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         eTFirst.setVisibility(View.VISIBLE);
         eTHefreshOrMahpil.setVisibility(View.VISIBLE);
         btnNext.setVisibility(View.VISIBLE);
-        handasitOrHeshbonit = false;
+        handasitOrHeshbonit = true;
     }
 
     public void goNext(View view) {
@@ -71,6 +71,20 @@ public class MainActivity extends AppCompatActivity {
             si.putExtra("handasitOrHeshbonit", handasitOrHeshbonit);
             startActivityForResult(si, REQUEST_CODE);
 
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE) {
+            eTFirst.setText("");
+            eTHefreshOrMahpil.setText("");
+            eTFirst.setVisibility(View.INVISIBLE);
+            eTHefreshOrMahpil.setVisibility(View.INVISIBLE);
+            btnNext.setVisibility(View.INVISIBLE);
+
+            handasitOrHeshbonit = false;
         }
     }
 
